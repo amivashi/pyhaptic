@@ -20,7 +20,7 @@ def find_comm_port():
         available = []
         for i in range(256):
             try:
-                s = serial.Serial(i)
+                s = serial.Serial('COM'+str(i + 1))
                 available.append('COM'+str(i + 1))
                 s.close()
             except serial.SerialException:
