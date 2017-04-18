@@ -1,0 +1,10 @@
+Readme
+SQL Injection Prevention
+
+Instruction to run the library:
+1. Copy the library created or the sanitize_input.php file into the folder or the location where the webapp code is present.
+2. Import the library into the webapp code by using the command:
+	include ‘sanitize_input.php’
+3. Replace all $_POST or $_GET with the function getparam(‘post’,‘name’) or getparam(‘get’,’name’).
+4. Run the webapp to test it for vulnerabilities.
+
