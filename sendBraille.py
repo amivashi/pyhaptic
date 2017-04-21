@@ -6,6 +6,7 @@ import serial
 import logging
 import random
 from displayBraille import cells
+from displayBraille import freq
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -29,22 +30,28 @@ def find_comm_port():
                 pass
         comm_port.extend(available)
     print "Printing current available comm ports.\n"
-    for i in comm_port:
-        print i
-    comm_choice = raw_input(
-        "\nPlease choose the full path to the comm port that the haptic controller is connected to:")
-    return comm_choice
+    return comm_port[0]
 
 def send(first, second) :
     print "running " + first
-    for x in cells[first]:
-        two_d_display.vibrate(x, 0, 0, 1)
-        print x
-    print "completed " + first
-    print "running " + second
-    for x in cells[first]:
-        two_d_display.vibrate(x + 5, 0, 0, 1)
-        print x
+    try:
+        frequency = freq[first]
+        print "frequency " + str(frequency)
+        for x in cells[first]:
+            #two_d_display.vibrate(x, 0, 0, frequency)
+            print x
+    except:
+        print "Symbol Not Found"
+    try:
+        print "completed " + first
+        print "running " + second
+        frequency = freq[second]
+        print "frequency " + str(frequency)
+        for x in cells[second]:
+            #two_d_display.vibrate(x + 5, 0, 0, frequency)
+            print x
+    except:
+        print "Symbol Not Found"
     print "completed " + second
     time.sleep(.1)
 
@@ -65,4 +72,20 @@ if __name__ == '__main__':
         i = 0
         while i < len(sentence) :
             send(sentence[i], sentence[i + 1])
+            i = i + 2
+
+def recieve_content(input_data) :
+    try:
+        two_d_display = HapticInterface(find_comm_port())
+        two_d_display.connect()
+    except:
+        print "Failed to connect on ..."
+    i = 0
+    while i < len(input_data):
+        try:
+            send(input_data[i], input_data[i + 1])
+            i = i + 2
+        except:
+            print "Length out of bound"
+            send(input_data[i], " ")
             i = i + 2

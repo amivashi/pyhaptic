@@ -1,5 +1,10 @@
+#!/usr/bin/env python
+
 import PyPDF2
 import docx
+import sendBraille
+from Tkinter import Tk
+from tkFileDialog import askopenfilename
 
 def extractPdf(input_file):
     pdf_file = open(input_file, 'rb')
@@ -29,4 +34,25 @@ def extractText(input_file):
 
 #print extractDocx("res/sample_multiple.docx")
 #print extractPdf("res/sample_multiple.pdf")
-print extractText("res/sample.txt")
+#print extractText("res/sample.txt")
+Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+input_file = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+page_content = ""
+try:
+    if(input_file.endswith(".pdf")) :
+        page_content = extractPdf(input_file)
+    elif(input_file.endswith(".docx")) :
+        page_content = extractDocx(input_file)
+    elif(input_file.endswith(".txt")) :
+        page_content = extractText(input_file)
+    else :
+        print "Please select valid PDF, DOCX, TXT file.\n"
+except (IOError) :
+    print "No Such file Found"
+
+try:
+    sendBraille.recieve_content(page_content)
+except :
+   print "Something Bad Happened"
+raw_input("Press Enter To Exit")
+
