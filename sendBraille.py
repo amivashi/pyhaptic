@@ -7,7 +7,6 @@ import logging
 import random
 from displayBraille import cells
 from displayBraille import freq
-
 logging.basicConfig(level=logging.DEBUG)
 
 from pyhaptic import HapticInterface
@@ -32,13 +31,13 @@ def find_comm_port():
     print "Printing current available comm ports.\n"
     return comm_port[0]
 
-def send(first, second) :
+def send(first, second,two_d_display) :
     print "running " + first
     try:
         frequency = freq[first]
         print "frequency " + str(frequency)
         for x in cells[first]:
-            #two_d_display.vibrate(x, 0, 0, frequency)
+            two_d_display.vibrate(x, 0, 0, frequency)
             print x
     except:
         print "Symbol Not Found"
@@ -48,12 +47,12 @@ def send(first, second) :
         frequency = freq[second]
         print "frequency " + str(frequency)
         for x in cells[second]:
-            #two_d_display.vibrate(x + 5, 0, 0, frequency)
+            two_d_display.vibrate(x + 5, 0, 3.5, frequency)
             print x
     except:
         print "Symbol Not Found"
     print "completed " + second
-    time.sleep(.1)
+    time.sleep(4)
 
 if __name__ == '__main__':
 
@@ -74,18 +73,18 @@ if __name__ == '__main__':
             send(sentence[i], sentence[i + 1])
             i = i + 2
 
-def recieve_content(input_data) :
-    try:
-        two_d_display = HapticInterface(find_comm_port())
-        two_d_display.connect()
-    except:
-        print "Failed to connect on ..."
+def recieve_content(input_data,two_d_display) :
+    # try:
+    #     two_d_display = HapticInterface(find_comm_port())
+    #     two_d_display.connect()
+    # except:
+    #     print "Failed to connect on ..."
     i = 0
     while i < len(input_data):
         try:
-            send(input_data[i], input_data[i + 1])
+            send(input_data[i], input_data[i + 1],two_d_display)
             i = i + 2
         except:
             print "Length out of bound"
-            send(input_data[i], " ")
+            send(input_data[i], " ",two_d_display)
             i = i + 2
