@@ -13,7 +13,7 @@ vibration = dict()
 vibration["letter"] = 1
 vibration["capital"] = 2
 vibration["number"] = 3
-vibration["special"] = 4
+vibration["special"] = 1
 
 # cells representation of characters
 cells = dict()
@@ -92,16 +92,19 @@ cells[","] = [braille[2]]
 cells[";"] = [braille[2], braille[3]]
 cells[":"] = [braille[2], braille[5]]
 cells["."] = [braille[2], braille[5], braille[6]]
+cells["."] = [braille[2], braille[5], braille[6]]
 cells["?"] = [braille[2], braille[3], braille[6]]
 cells["!"] = [braille[2], braille[3], braille[5]]
 cells["\""] = [braille[2], braille[3], braille[5], braille[6]]
-cells["“"] = [braille[2], braille[3], braille[5], braille[6]]
-cells["”"] = [braille[2], braille[3], braille[5], braille[6]]
+cells["("] = [braille[2], braille[3], braille[5], braille[6]]
+cells[")"] = [braille[2], braille[3], braille[5], braille[6]]
+cells["["] = [braille[2], braille[3], braille[5], braille[6]]
+cells["]"] = [braille[2], braille[3], braille[5], braille[6]]
 cells["‘"] = [braille[3]]
 cells["’"] = [braille[3]]
 cells["'"] = [braille[3]]
-cells["("] = [braille[2], braille[3], braille[6]]
-cells[")"] = [braille[3], braille[5], braille[6]]
+cells["“"] = [braille[2], braille[3], braille[6]]
+cells["”"] = [braille[3], braille[5], braille[6]]
 cells["/"] = [braille[3], braille[4]]
 #cells["\\"] = 456 16
 cells["–"] = [braille[3], braille[6]]
@@ -110,6 +113,7 @@ cells["—"] = [braille[3], braille[6]]
 cells["-"] = [braille[3], braille[6]]
 cells["@"] = [braille[3], braille[4], braille[5]]
 cells["*"] = [braille[3], braille[5]]
+cells["#"] = [braille[3], braille[4], braille[5], braille[6]]
 
 #Frequency Vibration of characters
 freq = dict()
@@ -205,6 +209,9 @@ freq["—"] = vibration["special"]
 freq["-"] = vibration["special"]
 freq["@"] = vibration["special"]
 freq["*"] = vibration["special"]
+freq["#"] = vibration["special"]
+freq["["] = vibration["special"]
+freq["]"] = vibration["special"]
 
 """
 ~
