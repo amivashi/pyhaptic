@@ -4,7 +4,7 @@
 braille = dict()
 braille[1] = 0
 braille[2] = 16
-braille[3] = 32
+braille[3] = 33
 braille[4] = 2
 braille[5] = 18
 braille[6] = 34
@@ -14,6 +14,13 @@ vibration["letter"] = 1
 vibration["capital"] = 2
 vibration["number"] = 3
 vibration["special"] = 1
+
+sleep = dict()
+sleep["letter"] = 1.8
+sleep["capital"] = 2.5
+sleep["number"] = 3.5
+sleep["special"] = 1.8
+
 
 # cells representation of characters
 cells = dict()
@@ -212,6 +219,104 @@ freq["*"] = vibration["special"]
 freq["#"] = vibration["special"]
 freq["["] = vibration["special"]
 freq["]"] = vibration["special"]
+
+#sleep time of characters
+slp = dict()
+# a - z
+slp["a"] = sleep["letter"]
+slp["b"] = sleep["letter"]
+slp["c"] = sleep["letter"]
+slp["d"] = sleep["letter"]
+slp["e"] = sleep["letter"]
+slp["f"] = sleep["letter"]
+slp["g"] = sleep["letter"]
+slp["h"] = sleep["letter"]
+slp["i"] = sleep["letter"]
+slp["j"] = sleep["letter"]
+slp["k"] = sleep["letter"]
+slp["l"] = sleep["letter"]
+slp["m"] = sleep["letter"]
+slp["n"] = sleep["letter"]
+slp["o"] = sleep["letter"]
+slp["p"] = sleep["letter"]
+slp["q"] = sleep["letter"]
+slp["r"] = sleep["letter"]
+slp["s"] = sleep["letter"]
+slp["t"] = sleep["letter"]
+slp["u"] = sleep["letter"]
+slp["v"] = sleep["letter"]
+slp["w"] = sleep["letter"]
+slp["x"] = sleep["letter"]
+slp["y"] = sleep["letter"]
+slp["z"] = sleep["letter"]
+
+# A - Z
+slp["A"] = sleep["capital"]
+slp["B"] = sleep["capital"]
+slp["C"] = sleep["capital"]
+slp["D"] = sleep["capital"]
+slp["E"] = sleep["capital"]
+slp["F"] = sleep["capital"]
+slp["G"] = sleep["capital"]
+slp["H"] = sleep["capital"]
+slp["I"] = sleep["capital"]
+slp["J"] = sleep["capital"]
+slp["K"] = sleep["capital"]
+slp["L"] = sleep["capital"]
+slp["M"] = sleep["capital"]
+slp["N"] = sleep["capital"]
+slp["O"] = sleep["capital"]
+slp["P"] = sleep["capital"]
+slp["Q"] = sleep["capital"]
+slp["R"] = sleep["capital"]
+slp["S"] = sleep["capital"]
+slp["T"] = sleep["capital"]
+slp["U"] = sleep["capital"]
+slp["V"] = sleep["capital"]
+slp["W"] = sleep["capital"]
+slp["X"] = sleep["capital"]
+slp["Y"] = sleep["capital"]
+slp["Z"] = sleep["capital"]
+
+# 0 - 9
+slp["1"] = sleep["number"]
+slp["2"] = sleep["number"]
+slp["3"] = sleep["number"]
+slp["4"] = sleep["number"]
+slp["5"] = sleep["number"]
+slp["6"] = sleep["number"]
+slp["7"] = sleep["number"]
+slp["8"] = sleep["number"]
+slp["9"] = sleep["number"]
+slp["0"] = sleep["number"]
+
+# punctuations
+slp[" "] = sleep["letter"]
+slp[","] = sleep["special"]
+slp[";"] = sleep["special"]
+slp[":"] = sleep["special"]
+slp["."] = sleep["special"]
+slp["?"] = sleep["special"]
+slp["!"] = sleep["special"]
+slp["\""] =sleep["special"]
+slp["“"] = sleep["special"]
+slp["”"] = sleep["special"]
+slp["‘"] = sleep["special"]
+slp["’"] = sleep["special"]
+slp["'"] = sleep["special"]
+slp["("] = sleep["special"]
+slp[")"] = sleep["special"]
+slp["/"] = sleep["special"]
+#slp["\\"] = 456 16sleep["special"]
+slp["–"] = sleep["special"]
+slp["–"] = sleep["special"]
+slp["—"] = sleep["special"]
+slp["-"] = sleep["special"]
+slp["@"] = sleep["special"]
+slp["*"] = sleep["special"]
+slp["#"] = sleep["special"]
+slp["["] = sleep["special"]
+slp["]"] = sleep["special"]
 
 """
 ~

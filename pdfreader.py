@@ -43,11 +43,12 @@ def find_comm_port():
             except serial.SerialException:
                 pass
         comm_port.extend(available)
-    print "Printing current available comm ports.\n"
-    for i in comm_port:
-        print i
-   # comm_choice = raw_input("\nPlease choose the full path to the comm port that the haptic controller is connected to:")
-    return str(comm_port[0])
+    #comm_choice = raw_input("\nPlease choose the full path to the comm port that the haptic controller is connected to:")
+    if len(comm_port) != 0 :
+        return str(comm_port[0])
+    else :
+        print "Please Reconnect."
+        return 0
 
 
 def extractDocx(input_file):
@@ -80,7 +81,7 @@ def window(input_file):
             print "Please select valid PDF, DOCX, TXT file.\n"
     except (IOError):
         print "No Such file Found"
-    return page_content
+    return page_content.replace("&", "and").replace('\n', ' ')
 
 
 
@@ -94,7 +95,7 @@ if __name__ == '__main__':
         two_d_display.connect()
     except:
         print "Failed to connect on ..."
-        #sys.exit(1)
+        sys.exit(1)
     #window()
     try:
         sendBraille.recieve_content(page,two_d_display)

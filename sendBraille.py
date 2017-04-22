@@ -7,6 +7,7 @@ import logging
 import random
 from displayBraille import cells
 from displayBraille import freq
+from displayBraille import slp
 logging.basicConfig(level=logging.DEBUG)
 
 from pyhaptic import HapticInterface
@@ -28,31 +29,35 @@ def find_comm_port():
             except serial.SerialException:
                 pass
         comm_port.extend(available)
-    print "Printing current available comm ports.\n"
+    # print "Printing current available comm ports.\n"
     return comm_port[0]
 
 def send(first, second,two_d_display) :
     print "running " + first
     try:
         frequency = freq[first]
-        print "frequency " + str(frequency)
+        #print "frequency " + str(frequency)
         for x in cells[first]:
             two_d_display.vibrate(x, 0, 0, frequency)
-            print x
+        #    print x
+        s1 = slp[first]
     except:
         print "Symbol Not Found"
+        s1 = 1.8
     try:
         print "completed " + first
         print "running " + second
         frequency = freq[second]
-        print "frequency " + str(frequency)
+        #print "frequency " + str(frequency)
         for x in cells[second]:
-            two_d_display.vibrate(x + 5, 0, 3.5, frequency)
-            print x
+            two_d_display.vibrate(x + 5, 0, 0, frequency)
+        #    print x
+        s2 = slp[second]
     except:
         print "Symbol Not Found"
+        s2 = 1.8
     print "completed " + second
-    time.sleep(4)
+    time.sleep(max(s1, s2))
 
 if __name__ == '__main__':
 
