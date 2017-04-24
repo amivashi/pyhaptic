@@ -2,12 +2,12 @@
 # mapping of chair to braille dots
 
 braille = dict()
-braille[1] = 0
-braille[2] = 16
-braille[3] = 33
-braille[4] = 2
-braille[5] = 18
-braille[6] = 34
+braille[4] = 0
+braille[5] = 8
+braille[6] = 16
+braille[1] = 7
+braille[2] = 15
+braille[3] = 23
 
 vibration = dict()
 vibration["letter"] = 1
@@ -92,7 +92,7 @@ cells["7"] = [braille[1], braille[2], braille[4], braille[5]]
 cells["8"] = [braille[1], braille[2], braille[5]]
 cells["9"] = [braille[2], braille[4]]
 cells["0"] = [braille[2], braille[4], braille[5]]
-
+cells["="] = [braille[1],braille[2], braille[3], braille[4], braille[5], braille[6]]
 # punctuations
 cells[" "] = []
 cells[","] = [braille[2]]
@@ -151,7 +151,7 @@ freq["w"] = vibration["letter"]
 freq["x"] = vibration["letter"]
 freq["y"] = vibration["letter"]
 freq["z"] = vibration["letter"]
-
+freq["="] = vibration["letter"]
 # A - Z
 freq["A"] = vibration["capital"]
 freq["B"] = vibration["capital"]
@@ -249,7 +249,7 @@ slp["w"] = sleep["letter"]
 slp["x"] = sleep["letter"]
 slp["y"] = sleep["letter"]
 slp["z"] = sleep["letter"]
-
+slp["="] = sleep["letter"]
 # A - Z
 slp["A"] = sleep["capital"]
 slp["B"] = sleep["capital"]

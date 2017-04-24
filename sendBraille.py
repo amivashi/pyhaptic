@@ -59,6 +59,22 @@ def send(first, second,two_d_display) :
     print "completed " + second
     time.sleep(max(s1, s2))
 
+def send1(first,two_d_display) :
+    print "running " + first
+    try:
+        frequency = freq[first]
+        #print "frequency " + str(frequency)
+        for x in cells[first]:
+            two_d_display.vibrate(x, 0, 0, frequency)
+        #    print x
+        s1 = slp[first]
+    except:
+        print "Symbol Not Found"
+        s1 = 1.8
+    print "completed " + first
+    time.sleep(s1)
+
+
 if __name__ == '__main__':
 
     two_d_display = HapticInterface(find_comm_port())
@@ -87,8 +103,10 @@ def recieve_content(input_data,two_d_display) :
     i = 0
     while i < len(input_data):
         try:
-            send(input_data[i], input_data[i + 1],two_d_display)
-            i = i + 2
+            #send(input_data[i], input_data[i + 1],two_d_display)
+            #i = i + 2
+            send1(input_data[i], two_d_display)
+            i = i + 1
         except:
             print "Length out of bound"
             send(input_data[i], " ",two_d_display)
